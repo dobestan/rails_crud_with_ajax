@@ -1,0 +1,25 @@
+<h1>All Pastebins</h1>
+<h2>Create new pastebins</h2>
+<p>title : <br />
+    <%= text_field_tag "pastebin[title]" %>
+</p>
+<p>text : <br />
+    <%= text_area_tag "pastebin[text]" %>
+</p>
+<button type="submit" onclick="new_comment()">create pastebin</button>
+
+<h2>Show all pastebins</h2>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>TITLE</td>
+        <td>TEXT</td>
+    </tr>
+    <% @pastebins.each do |pastebin| %>
+        <tr>
+            <td><%= pastebin.id %></td>
+            <td><%= pastebin.title %></td>
+            <td><%= pastebin.text %></td>
+        </tr>
+    <% end %>
+</table>
