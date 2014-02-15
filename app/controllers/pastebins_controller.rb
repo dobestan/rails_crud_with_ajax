@@ -1,0 +1,2 @@
+class PastebinsController < ApplicationController
+end
