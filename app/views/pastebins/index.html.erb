@@ -6,10 +6,10 @@
 <p>text : <br />
     <%= text_area_tag "pastebin[text]" %>
 </p>
-<button type="submit" onclick="new_comment()">create pastebin</button>
+<button type="submit" onclick="new_pastebin()">create pastebin</button>
 
 <h2>Show all pastebins</h2>
-<table>
+<table id="pastebin_table">
     <tr>
         <td>ID</td>
         <td>TITLE</td>
@@ -23,3 +23,17 @@
         </tr>
     <% end %>
 </table>
+
+<script type="text/javascript">
+    function new_pastebin() {
+        $.ajax({url: "<%= pastebins_path %>",
+                type: "post",
+                data: {title: $("#pastebin_title").val(),
+                        text: $("#pastebin_text").val()
+                        },
+
+                success: function(pastebin) {
+                    $("#pastebin_table").append("<tr><td>" + pastebin.id + "</td><td>" + pastebin.title + "</td><td>" + pastebin.text + "</td></tr>");
+                }});
+    }
+</script>
